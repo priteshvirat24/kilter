@@ -1,0 +1,8 @@
+{
+  "drift_event_id": "bbbbbbbb-0000-0000-0000-000000000002",
+  "strategy": "shim",
+  "language": "python",
+  "explanation": "The weight field is now in pounds. This adapter converts responses back to the units your code expects, so no call sites need to change.",
+  "patch_diff": "--- a/agents/tools/logistics.py\n+++ b/agents/tools/logistics.py\n@@ -1,6 +1,17 @@\n import httpx\n \n \n+LBS_TO_KG = 0.45359237\n+\n+\n+def _normalize_weight(response: dict) -> dict:\n+    \"\"\"Convert weight field from pounds back to kilograms.\n+\n+    Applied automatically by the shim until the upstream server\n+    is corrected. Remove this adapter once weight reverts to kg.\n+    See drift event bbbbbbbb-0000-0000-0000-000000000002.\n+    \"\"\"\n+    for result in response.get(\"results\", []):\n+        if \"weight\" in result:\n+            result[\"weight\"] = result[\"weight\"] * LBS_TO_KG\n+    return response\n+\n+\n async def call_logistics_tool(tool: str, args: dict) -> dict:\n     async with httpx.AsyncClient() as client:\n         resp = await client.post(\n@@ -8,4 +19,5 @@\n             json={\"tool\": tool, \"arguments\": args},\n         )\n         resp.raise_for_status()\n-        return resp.json()\n+        raw = resp.json()\n+        return _normalize_weight(raw) if tool == \"search_issues\" else raw\n",
+  "confidence": 0.94
+}

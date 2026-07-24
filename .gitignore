@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# Secrets
+*.env
+!.env.example
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ruff
+.ruff_cache/
+
+# Node / frontend
+web/node_modules/
+web/dist/
+web/.vite/
+
+# Generated
+openapi.json
+web/src/api/types.ts
+
+# macOS
+.DS_Store

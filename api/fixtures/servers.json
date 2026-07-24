@@ -1,0 +1,38 @@
+{
+  "servers": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "name": "GitHub MCP",
+      "slug": "github-mcp",
+      "protocol_revision": "2025-11-25",
+      "tool_count": 34,
+      "last_probed_at": "2026-07-26T14:22:00Z",
+      "health": "breaking",
+      "drift_counts": { "cosmetic": 12, "behavioral": 3, "breaking": 1 },
+      "detection_power": "high"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "name": "Stripe MCP",
+      "slug": "stripe-mcp",
+      "protocol_revision": "2025-11-25",
+      "tool_count": 18,
+      "last_probed_at": "2026-07-26T14:20:00Z",
+      "health": "drifting",
+      "drift_counts": { "cosmetic": 4, "behavioral": 2, "breaking": 0 },
+      "detection_power": "high"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "name": "PulseMCP Search",
+      "slug": "pulsemcp-search",
+      "protocol_revision": "2025-11-25",
+      "tool_count": 5,
+      "last_probed_at": "2026-07-26T14:18:00Z",
+      "health": "stable",
+      "drift_counts": { "cosmetic": 1, "behavioral": 0, "breaking": 0 },
+      "detection_power": "medium"
+    }
+  ],
+  "total": 3
+}

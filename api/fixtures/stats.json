@@ -1,0 +1,7 @@
+{
+  "servers_monitored": 47,
+  "probe_runs_total": 1284,
+  "drift_events": { "cosmetic": 210, "behavioral": 34, "breaking": 6 },
+  "servers_with_breaking_drift_7d": 4,
+  "last_run_at": "2026-07-26T18:00:00Z"
+}

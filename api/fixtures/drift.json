@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "id": "bbbbbbbb-0000-0000-0000-000000000002",
+      "server": { "id": "00000000-0000-0000-0000-000000000001", "name": "GitHub MCP", "slug": "github-mcp" },
+      "detected_at": "2026-07-26T09:00:00Z",
+      "layer": "l2_statistical",
+      "severity": "breaking",
+      "change_type": "unit_shift",
+      "field_path": "results[*].weight",
+      "title": "weight field changed from kilograms to pounds",
+      "confidence": 0.94,
+      "has_remediation": true,
+      "acknowledged": false
+    },
+    {
+      "id": "bbbbbbbb-0000-0000-0000-000000000003",
+      "server": { "id": "00000000-0000-0000-0000-000000000001", "name": "GitHub MCP", "slug": "github-mcp" },
+      "detected_at": "2026-07-26T09:00:00Z",
+      "layer": "l0_capability",
+      "severity": "behavioral",
+      "change_type": "description_changed",
+      "field_path": null,
+      "title": "Tool description for search_issues changed (cosine distance 0.21)",
+      "confidence": 0.88,
+      "has_remediation": false,
+      "acknowledged": false
+    },
+    {
+      "id": "bbbbbbbb-0000-0000-0000-000000000001",
+      "server": { "id": "00000000-0000-0000-0000-000000000001", "name": "GitHub MCP", "slug": "github-mcp" },
+      "detected_at": "2026-07-26T11:00:00Z",
+      "layer": "l1_structural",
+      "severity": "behavioral",
+      "change_type": "cardinality_shift",
+      "field_path": "results[*]",
+      "title": "search_issues result count dropped from median 20 to 10",
+      "confidence": 0.91,
+      "has_remediation": false,
+      "acknowledged": false
+    }
+  ],
+  "next_cursor": null
+}

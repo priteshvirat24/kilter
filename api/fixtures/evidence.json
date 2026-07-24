@@ -1,0 +1,38 @@
+{
+  "drift_event_id": "bbbbbbbb-0000-0000-0000-000000000002",
+  "server": { "id": "00000000-0000-0000-0000-000000000001", "name": "GitHub MCP", "slug": "github-mcp" },
+  "detected_at": "2026-07-26T09:00:00Z",
+  "layer": "l2_statistical",
+  "severity": "breaking",
+  "change_type": "unit_shift",
+  "field_path": "results[*].weight",
+  "title": "weight field changed from kilograms to pounds",
+  "confidence": 0.94,
+  "evidence": {
+    "layer": "l2_statistical",
+    "test": "kolmogorov_smirnov",
+    "statistic": 0.83,
+    "p_value": 0.0002,
+    "p_value_adjusted": 0.0031,
+    "field_volatility": 0.04,
+    "baseline": {
+      "sample_count": 30,
+      "window": ["2026-07-20T00:00:00Z", "2026-07-24T00:00:00Z"],
+      "summary": { "mean": 12.4, "std": 3.1, "unit_hint": "kg" },
+      "examples": [12.1, 13.0, 11.8]
+    },
+    "current": {
+      "sample_count": 30,
+      "window": ["2026-07-25T00:00:00Z", "2026-07-25T06:00:00Z"],
+      "summary": { "mean": 27.3, "std": 6.9, "unit_hint": "kg" },
+      "examples": [27.4, 28.6, 26.0]
+    },
+    "detected_pattern": {
+      "kind": "unit_shift",
+      "factor": 2.20462,
+      "interpretation": "kilograms to pounds"
+    },
+    "plain_english": "The `weight` field is now about 2.2× larger. The distribution shape is unchanged, which is consistent with a unit change from kilograms to pounds rather than a change in the underlying data.",
+    "affected_probesets": 3
+  }
+}

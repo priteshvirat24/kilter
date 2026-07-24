@@ -1,0 +1,179 @@
+/*
+  web/src/styles/tokens.css — Design tokens. Single source of truth.
+
+  Design direction: metrology. Tolerance bands. Calibration certificates.
+  Control charts. Engineering drawings where every dimension has a nominal
+  value and a permitted deviation. Structurally correct: drift detection
+  literally is "is the measured value still inside tolerance."
+
+  CRITICAL: --in-spec is grey. Everything working correctly is visually
+  silent. Only deviation gets color. This is how real instrumentation works.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap');
+
+:root {
+  /* ── Ground — deep blueprint slate ─────────────────────────────────────
+     Cool, not black. Reads as instrument housing. */
+  --ground-000: #0C1118;   /* page */
+  --ground-100: #131A24;   /* panel */
+  --ground-200: #1A2331;   /* raised */
+  --hairline:   #26313F;   /* 1px rules — used constantly, never decoratively */
+
+  /* ── Ink ────────────────────────────────────────────────────────────── */
+  --ink-000:    #E8EDF3;   /* primary text */
+  --ink-100:    #9AA8B8;   /* secondary */
+  --ink-200:    #5F6E80;   /* tertiary, axis labels */
+
+  /* ── Measurement palette — borrowed from instrument faces ──────────── */
+  --reference:  #4FB8C9;   /* baseline / nominal — instrument cyan */
+  --tolerance:  #1E3A42;   /* the tolerance envelope fill */
+  --in-spec:    #7A8898;   /* measured & fine — DELIBERATELY BORING */
+  --behavioral: #E8A33D;   /* instrument amber */
+  --breaking:   #E5484D;   /* signal red */
+  --cosmetic:   #3D4A5A;   /* barely visible, on purpose */
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+  --font-display: 'IBM Plex Sans Condensed', system-ui, sans-serif;
+  --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  /* ── Type scale (1.25 ratio, tight): 11 / 13 / 16 / 20 / 25 / 31 ──── */
+  --text-xs:  11px;
+  --text-sm:  13px;
+  --text-md:  16px;
+  --text-lg:  20px;
+  --text-xl:  25px;
+  --text-2xl: 31px;
+
+  /* ── Spacing — all multiples of 4 ──────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Border radius — max 4px; no generic Bootstrap-era shadows ──────── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* ── Focus ring — keyboard accessibility ─────────────────────────────── */
+  --focus-ring: 0 0 0 2px var(--reference);
+
+  /* ── Transition ──────────────────────────────────────────────────────── */
+  --transition-fast: 120ms ease;
+  --transition-draw: 600ms ease-out;  /* ToleranceBand draw animation */
+}
+
+/* ── Base reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--ground-000);
+  color: var(--ink-000);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Every number, field path, tool name, statistic renders in mono ─────── */
+code, kbd, samp, pre,
+.mono, [data-mono] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;   /* columns align */
+}
+
+/* ── Hairline rules — 1px everywhere, never 2px, no double borders ──────── */
+hr, .hairline {
+  border: none;
+  border-top: 1px solid var(--hairline);
+}
+
+/* ── Focus ring ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Labels — 11px mono uppercase ───────────────────────────────────────── */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-200);
+}
+
+/* ── Severity chips ─────────────────────────────────────────────────────── */
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.chip--breaking  { background: rgba(229, 72, 77, 0.15);  color: var(--breaking); }
+.chip--behavioral { background: rgba(232, 163, 61, 0.15); color: var(--behavioral); }
+.chip--cosmetic  { background: rgba(61, 74, 90, 0.5);    color: var(--ink-200); }
+.chip--stable    { background: transparent;               color: var(--in-spec); border: 1px solid var(--hairline); }
+
+/* ── Responsive desktop-only notice ─────────────────────────────────────── */
+.mobile-notice {
+  display: none;
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--ink-100);
+  font-size: var(--text-md);
+}
+
+@media (max-width: 768px) {
+  .app-root { display: none; }
+  .mobile-notice { display: block; }
+}
+
+/* ── Loading skeleton ────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--ground-100) 25%,
+    var(--ground-200) 50%,
+    var(--ground-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── prefers-reduced-motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

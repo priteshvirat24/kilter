@@ -1,0 +1,30 @@
+{
+  "id": "00000000-0000-0000-0000-000000000001",
+  "name": "GitHub MCP",
+  "endpoint_url": "https://api.githubcopilot.com/mcp/",
+  "protocol_revision": "2025-11-25",
+  "baseline_established_at": "2026-07-24T09:00:00Z",
+  "tools": [
+    {
+      "name": "search_issues",
+      "probeset_count": 3,
+      "volatility_mean": 0.31,
+      "detection_power": "medium",
+      "last_drift": { "severity": "behavioral", "detected_at": "2026-07-26T11:00:00Z" }
+    },
+    {
+      "name": "list_repos",
+      "probeset_count": 2,
+      "volatility_mean": 0.08,
+      "detection_power": "high",
+      "last_drift": null
+    },
+    {
+      "name": "get_file_contents",
+      "probeset_count": 2,
+      "volatility_mean": 0.04,
+      "detection_power": "high",
+      "last_drift": { "severity": "breaking", "detected_at": "2026-07-26T09:00:00Z" }
+    }
+  ]
+}
