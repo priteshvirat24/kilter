@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #FDFBF7; /* Warm Beige */
+    --bg-secondary: #FAF8F5; /* Soft White */
+    --bg-stone: #F4F1EA; /* Stone White */
+    --bg-sand: #EBE5DC; /* Sand */
+    --bg-cream: #F7EFE6; /* Natural Cream */
+    
+    --text-primary: #1A1B1E; /* Graphite */
+    --text-secondary: #2C2E33; /* Deep Charcoal */
+    --text-muted: #6A707A;
+    --border-color: rgba(26, 27, 30, 0.12);
+    --border-strong: rgba(26, 27, 30, 0.24);
+
+    --accent-rust: #C84B31; /* Rust Orange */
+    --accent-burnt: #D97706; /* Burnt Orange */
+    --accent-sandy: #E08E45; /* Sandy Orange */
+    --accent-earth: #3B5249; /* Earth Green */
+    --accent-moss: #51684B; /* Moss Green */
+    --accent-olive: #6A7B4C; /* Olive Green */
+    
+    --support-brown: #5C4033; /* Warm Brown */
+    --support-bronze: #8C7A6B; /* Muted Bronze */
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Metrology & Engineering UI Utilities */
+.metrology-grid {
+  background-image: linear-gradient(to right, rgba(26, 27, 30, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(26, 27, 30, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.metrology-grid-dense {
+  background-image: linear-gradient(to right, rgba(26, 27, 30, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(26, 27, 30, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.glass-nav {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background: rgba(250, 248, 245, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px -4px rgba(26, 27, 30, 0.04);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(244, 241, 234, 0.9);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px rgba(26, 27, 30, 0.08);
+}
+
+.mono-spec {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: -0.02em;
+}
