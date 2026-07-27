@@ -15,7 +15,7 @@ export const SafetyGateTester: React.FC = () => {
     'destroy', 'wipe', 'reset', 'trigger'
   ];
 
-  const evaluateSafety = (name: str, desc: str) => {
+  const evaluateSafety = (name: string, desc: string) => {
     const combined = `${name} ${desc}`.toLowerCase();
     const regex = new RegExp(`(?<![a-z])(${unsafeWords.join('|')})(?![a-z])`, 'i');
     const match = combined.match(regex);
